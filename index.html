@@ -55,7 +55,7 @@ nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;back
 #mob .mob-sub{opacity:.4;font-size:22px;}
 
 /* HERO */
-.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 100px;position:relative;z-index:2;}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:160px 24px 100px;position:relative;z-index:2;}
 .hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:600px;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 50% 30%,rgba(244,161,17,0.07) 0%,transparent 65%);}
 .hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;color:var(--t3);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:32px;animation:fu .8s cubic-bezier(.16,1,.3,1) both;}
 .kicker-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px var(--amber);animation:pulse 2.4s ease-in-out infinite;}
@@ -168,7 +168,7 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 @media(max-width:900px){
-  nav{top:11px;width:calc(100% - 26px);padding:0 16px;border-radius:100px;}
+  nav{top:10px;width:calc(100% - 24px);padding:0 16px;border-radius:100px;}
   .nav-links{display:none;}.ham{display:flex;}.nav-cta{display:none;}
   .wrap{padding:64px 22px;}
   .products-grid{grid-template-columns:1fr;}
@@ -177,13 +177,14 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
   .contact-grid::after{display:none;}
   footer{flex-direction:column;align-items:flex-start;padding:22px;}
   .scr{display:none;}
-  .hero{padding:110px 22px 72px;}
+  .hero{min-height:auto;padding:100px 22px 60px;}
 }
 @media(max-width:520px){
   .hero h1{font-size:38px;}
-  .pcard-body{padding:26px 22px;}
-  .cl,.cr{padding:32px 24px;}
+  .pcard-body{padding:26px 20px;}
+  .cl,.cr{padding:32px 22px;}
   .mission-pull{font-size:26px;}
+  .products-grid{gap:12px;}
 }
 </style>
 </head>
