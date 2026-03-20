@@ -11,21 +11,13 @@
 <meta property="og:description" content="Building apps that work the way you intended. Two products. Both solve problems that were designed to go unnoticed.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://caffeinelabs.in">
+<meta property="og:image" content="https://caffeinelabs.in/og-image.svg">
 <meta property="og:locale" content="en_IN">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a08'/%3E%3Ctext x='16' y='16' dominant-baseline='central' text-anchor='middle' font-family='system-ui' font-weight='900' font-size='18' fill='rgba(240%2C236%2C228%2C0.58)'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════
-   SHARED SYSTEM — CAFFEINE LABS
-   Tokens shared across all three sites:
-   - Floating glass pill nav
-   - Glass card shell (blur+shimmer)
-   - border-radius: 16px cards
-   - Section: 96px 52px / 64px 22px mobile
-   - Footer: single row, logo left, links right
-═══════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px;}
 :root{
@@ -33,41 +25,20 @@ html{scroll-behavior:smooth;scroll-padding-top:80px;}
   --t2:rgba(240,236,228,0.58);--t3:rgba(240,236,228,0.32);--t4:rgba(240,236,228,0.15);
   --b1:rgba(255,255,255,0.07);--b2:rgba(255,255,255,0.12);--b3:rgba(255,255,255,0.20);
   --amber:#F4A111;
-  /* shared card shell */
-  --card-bg:rgba(255,255,255,0.04);
-  --card-border:rgba(255,255,255,0.11);
-  --card-blur:blur(52px);
-  --card-radius:16px;
-  /* shared nav */
-  --nav-h:54px;
-  /* shared section padding */
-  --sec-pad:96px 52px;
-  --sec-pad-mob:64px 22px;
+  --card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.11);
+  --card-blur:blur(52px);--card-radius:16px;--nav-h:54px;
 }
 body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
 .bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 15% 15%,rgba(244,161,17,0.06) 0%,transparent 60%),radial-gradient(ellipse 55% 45% at 85% 25%,rgba(255,255,255,0.04) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 50% 85%,rgba(244,161,17,0.04) 0%,transparent 60%),var(--bg);}
 body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");}
 
-/* ── SHARED: FLOATING GLASS PILL NAV ── */
-nav{
-  position:fixed;top:16px;left:50%;transform:translateX(-50%);
-  z-index:500;width:calc(100% - 48px);max-width:1060px;
-  border-radius:18px;height:var(--nav-h);
-  display:flex;align-items:center;justify-content:space-between;padding:0 20px;
-  background:rgba(255,255,255,0.07);
-  backdrop-filter:blur(52px) saturate(2.2);-webkit-backdrop-filter:blur(52px) saturate(2.2);
-  border:1px solid rgba(255,255,255,0.14);
-  box-shadow:0 8px 40px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.15);
-  overflow:hidden;
-}
+/* ── SHARED FLOATING GLASS PILL NAV ── */
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:500;width:calc(100% - 48px);max-width:1060px;border-radius:100px;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(255,255,255,0.07);backdrop-filter:var(--card-blur) saturate(2.2);-webkit-backdrop-filter:var(--card-blur) saturate(2.2);border:1px solid var(--card-border);box-shadow:0 8px 40px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.15);overflow:hidden;}
 nav::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(145deg,rgba(255,255,255,0.09) 0%,transparent 55%);}
-/* shared shimmer line */
 nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.58),transparent);pointer-events:none;}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;position:relative;z-index:1;flex-shrink:0;}
-.logo-mark{width:32px;height:32px;border-radius:8px;background:#0a0a08;border:1px solid rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.logo-name{font-size:14px;font-weight:600;color:var(--text);letter-spacing:-0.02em;}
+.logo-name{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-0.02em;text-decoration:none;position:relative;z-index:1;}
 .nav-links{display:flex;gap:2px;position:absolute;left:50%;transform:translateX(-50%);z-index:1;}
-.nav-link{font-size:13px;font-weight:400;color:var(--t2);text-decoration:none;padding:6px 14px;border-radius:8px;transition:color .2s,background .2s;}
+.nav-link{font-size:13px;font-weight:400;color:var(--t2);text-decoration:none;padding:6px 14px;border-radius:100px;transition:color .2s,background .2s;}
 .nav-link:hover{color:var(--text);background:rgba(255,255,255,0.07);}
 .nav-r{display:flex;align-items:center;gap:8px;position:relative;z-index:1;flex-shrink:0;}
 .nav-cta{font-size:12px;font-weight:600;color:var(--bg);background:var(--text);padding:7px 17px;border-radius:100px;text-decoration:none;transition:opacity .2s,transform .2s;white-space:nowrap;}
@@ -77,7 +48,7 @@ nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;back
 .ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
 .ham.open span:nth-child(2){opacity:0;}
 .ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-#mob{display:none;position:fixed;inset:0;z-index:490;background:rgba(13,13,11,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:28px;}
+#mob{display:none;position:fixed;inset:0;z-index:490;background:rgba(13,13,11,0.97);backdrop-filter:var(--card-blur);-webkit-backdrop-filter:var(--card-blur);flex-direction:column;align-items:center;justify-content:center;gap:28px;}
 #mob.open{display:flex;}
 #mob a{font-size:36px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.04em;transition:opacity .2s;}
 #mob a:hover{opacity:.5;}
@@ -95,7 +66,7 @@ nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;back
 .hero-actions{display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;animation:fu .8s .24s cubic-bezier(.16,1,.3,1) both;}
 .btn-p{font-size:13px;font-weight:600;color:var(--bg);background:var(--text);padding:12px 26px;border-radius:100px;text-decoration:none;transition:opacity .2s,transform .2s;}
 .btn-p:hover{opacity:.86;transform:translateY(-1px);}
-.btn-g{font-size:13px;font-weight:400;color:var(--t2);padding:11px 20px;border-radius:100px;border:1px solid var(--b2);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s,border-color .2s;background:var(--card-bg);backdrop-filter:var(--card-blur);-webkit-backdrop-filter:var(--card-blur);position:relative;overflow:hidden;}
+.btn-g{font-size:13px;font-weight:400;color:var(--t2);padding:11px 20px;border-radius:100px;border:1px solid var(--b2);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s,border-color .2s;background:var(--card-bg);position:relative;overflow:hidden;}
 .btn-g::after{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);}
 .btn-g:hover{color:var(--text);border-color:var(--b3);}
 .btn-g svg{transition:transform .2s;flex-shrink:0;}
@@ -106,9 +77,9 @@ nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;back
 .scr-bar::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.6),transparent);animation:sd 2.2s ease infinite;}
 @keyframes sd{0%{top:-100%}100%{top:200%}}
 
-/* ── SHARED: SECTION BASE ── */
+/* SECTIONS */
 .section{position:relative;z-index:2;border-top:1px solid var(--b1);}
-.wrap{max-width:1060px;margin:0 auto;padding:var(--sec-pad);}
+.wrap{max-width:1060px;margin:0 auto;padding:96px 52px;}
 .sec-label{font-size:10px;font-weight:600;color:var(--t3);letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
 .sec-label::before{content:'';width:14px;height:1px;background:var(--t4);flex-shrink:0;}
 .sec-title{font-size:clamp(30px,4vw,48px);font-weight:300;letter-spacing:-0.03em;line-height:1.08;margin-bottom:12px;color:var(--text);}
@@ -118,16 +89,11 @@ nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;back
 .d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;}}
 
-/* ── SHARED: GLASS CARD SHELL ── */
-.pcard{
-  border-radius:var(--card-radius);overflow:hidden;position:relative;
-  display:flex;flex-direction:column;
-  border:1px solid var(--card-border);
-  transition:border-color .25s;
-}
+/* PRODUCT CARDS */
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;align-items:stretch;}
+.pcard{border-radius:var(--card-radius);overflow:hidden;position:relative;display:flex;flex-direction:column;border:1px solid var(--card-border);transition:border-color .25s;}
 .pcard:hover{border-color:rgba(255,255,255,0.2);}
 .pcard::before{content:'';position:absolute;inset:0;pointer-events:none;background:var(--card-bg);backdrop-filter:var(--card-blur);-webkit-backdrop-filter:var(--card-blur);}
-/* shimmer line on every card */
 .pcard::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);pointer-events:none;z-index:3;}
 .pcard-body{position:relative;z-index:1;padding:38px;flex:1;display:flex;flex-direction:column;transition:background .25s;}
 .pcard:hover .pcard-body{background:rgba(255,255,255,.03);}
@@ -155,7 +121,6 @@ nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;back
 .pc-btn svg{transition:transform .2s;flex-shrink:0;}
 .pc-btn:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.22);transform:translateY(-1px);}
 .pc-btn:hover svg{transform:translateX(3px);}
-.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;align-items:stretch;}
 
 /* MISSION */
 .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
@@ -170,12 +135,9 @@ nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;back
 .pr-t{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.01em;margin-bottom:4px;}
 .pr-d{font-size:12.5px;color:var(--t3);line-height:1.65;font-weight:300;}
 
-/* ── SHARED: CONTACT GLASS SHELL ── */
-.contact-shell{
-  border-radius:var(--card-radius);overflow:hidden;margin-top:48px;
-  border:1px solid var(--card-border);position:relative;
-}
-.contact-shell::before{content:'';position:absolute;inset:0;border-radius:var(--card-radius);pointer-events:none;background:var(--card-bg);backdrop-filter:var(--card-blur);-webkit-backdrop-filter:var(--card-blur);}
+/* CONTACT */
+.contact-shell{border-radius:var(--card-radius);overflow:hidden;margin-top:48px;border:1px solid var(--card-border);position:relative;}
+.contact-shell::before{content:'';position:absolute;inset:0;pointer-events:none;background:var(--card-bg);backdrop-filter:var(--card-blur);-webkit-backdrop-filter:var(--card-blur);}
 .contact-shell::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);pointer-events:none;z-index:2;}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;position:relative;z-index:1;}
 .contact-grid::after{content:'';position:absolute;top:10%;bottom:10%;left:50%;width:1px;background:var(--b1);}
@@ -192,30 +154,23 @@ nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;back
 .ct span{font-size:11px;color:var(--t3);}
 .ca{margin-left:auto;color:var(--t4);}
 
-/* ── SHARED: FOOTER ── */
-footer{
-  border-top:1px solid var(--b1);
-  padding:26px 52px;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:14px;
-  position:relative;z-index:2;
-}
+/* SHARED FOOTER */
+footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;position:relative;z-index:2;}
 .fl{display:flex;align-items:center;gap:12px;}
-.f-logo{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--t2);text-decoration:none;letter-spacing:-.02em;}
-.f-mark{width:24px;height:24px;border-radius:6px;background:#0a0a08;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;}
+.f-logo{font-size:13px;font-weight:700;color:var(--t2);text-decoration:none;letter-spacing:-.02em;}
 .f-sep{color:var(--b2);}
 .f-copy{font-size:10px;color:var(--t4);letter-spacing:.04em;}
 .flinks{display:flex;gap:20px;flex-wrap:wrap;}
-.flinks a{font-size:11px;color:var(--t4);text-decoration:none;transition:color .2s;}
+.flinks a{font-size:11px;color:var(--t4);text-decoration:none;transition:color .2s;cursor:pointer;}
 .flinks a:hover{color:var(--t2);}
 
 @keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 @media(max-width:900px){
-  nav{top:11px;width:calc(100% - 26px);padding:0 16px;}
+  nav{top:11px;width:calc(100% - 26px);padding:0 16px;border-radius:100px;}
   .nav-links{display:none;}.ham{display:flex;}.nav-cta{display:none;}
-  .wrap{padding:var(--sec-pad-mob);}
+  .wrap{padding:64px 22px;}
   .products-grid{grid-template-columns:1fr;}
   .mission-grid{grid-template-columns:1fr;gap:48px;}
   .contact-grid{grid-template-columns:1fr;}
@@ -243,14 +198,7 @@ footer{
 </div>
 
 <nav>
-  <a href="#" class="logo">
-    <div class="logo-mark">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Be Vietnam Pro,system-ui,sans-serif" font-weight="800" font-size="18" fill="rgba(240,236,228,0.58)">C</text>
-      </svg>
-    </div>
-    <span class="logo-name">Caffeine Labs</span>
-  </a>
+  <a href="#" class="logo-name">Caffeine Labs</a>
   <div class="nav-links">
     <a href="#products" class="nav-link">Products</a>
     <a href="#mission" class="nav-link">Mission</a>
@@ -271,10 +219,7 @@ footer{
   <p class="hero-sub">We make two things. Both solve problems that were designed to go unnoticed.</p>
   <div class="hero-actions">
     <a href="#products" class="btn-p">Our Products</a>
-    <a href="#mission" class="btn-g">
-      Our Mission
-      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    <a href="#mission" class="btn-g">Our Mission<svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
   <div class="scr" aria-hidden="true"><span>Scroll</span><div class="scr-bar"></div></div>
 </section>
@@ -289,13 +234,8 @@ footer{
         <div class="pcard-body">
           <div class="pc-top">
             <div class="pc-brand">
-              <div class="p-mark pm-l">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Be Vietnam Pro,system-ui,sans-serif" font-weight="800" font-size="22" fill="#F4A111">L</text></svg>
-              </div>
-              <div class="pc-brand-name">
-                <span class="pc-name">Labelyze</span>
-                <span class="pc-domain">labelyze.in</span>
-              </div>
+              <div class="p-mark pm-l"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Be Vietnam Pro,system-ui,sans-serif" font-weight="800" font-size="22" fill="#F4A111">L</text></svg></div>
+              <div class="pc-brand-name"><span class="pc-name">Labelyze</span><span class="pc-domain">labelyze.in</span></div>
             </div>
             <div class="pc-status"><span class="ps-dot"></span>Building · 2026</div>
           </div>
@@ -317,13 +257,8 @@ footer{
         <div class="pcard-body">
           <div class="pc-top">
             <div class="pc-brand">
-              <div class="p-mark">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Be Vietnam Pro,system-ui,sans-serif" font-weight="800" font-size="22" fill="rgba(240,236,228,0.85)">R</text></svg>
-              </div>
-              <div class="pc-brand-name">
-                <span class="pc-name">Rewyr</span>
-                <span class="pc-domain">rewyr.in</span>
-              </div>
+              <div class="p-mark"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Be Vietnam Pro,system-ui,sans-serif" font-weight="800" font-size="22" fill="rgba(240,236,228,0.85)">R</text></svg></div>
+              <div class="pc-brand-name"><span class="pc-name">Rewyr</span><span class="pc-domain">rewyr.in</span></div>
             </div>
             <div class="pc-status"><span class="ps-dot"></span>Building · 2026</div>
           </div>
@@ -377,9 +312,9 @@ footer{
           <p class="cp">Waitlist signups, feedback, or just a question. We read everything and reply.</p>
         </div>
         <div class="cr">
-          <a href="/cdn-cgi/l/email-protection#3058555c5c5f705351565655595e555c5152431e595e" class="clink">
+          <a href="mailto:hello@caffeinelabs.in" class="clink">
             <div class="ci"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="color:rgba(240,236,228,0.55)"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
-            <div class="ct"><strong>Email Us</strong><span><span class="__cf_email__" data-cfemail="a0c8c5cccccfe0c3c1c6c6c5c9cec5ccc1c2d38ec9ce">[email&#160;protected]</span></span></div>
+            <div class="ct"><strong>Email Us</strong><span>hello@caffeinelabs.in</span></div>
             <svg class="ca" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a href="https://labelyze.in" target="_blank" rel="noopener" class="clink">
@@ -400,25 +335,28 @@ footer{
 
 <footer>
   <div class="fl">
-    <a href="#" class="f-logo">
-      <div class="f-mark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Be Vietnam Pro,system-ui,sans-serif" font-weight="800" font-size="14" fill="rgba(240,236,228,0.58)">C</text></svg></div>
-      Caffeine Labs
-    </a>
+    <a href="#" class="f-logo">Caffeine Labs</a>
     <span class="f-sep">—</span>
     <span class="f-copy">2026 · India</span>
   </div>
   <div class="flinks">
     <a href="https://labelyze.in" target="_blank" rel="noopener">Labelyze</a>
     <a href="https://rewyr.in" target="_blank" rel="noopener">Rewyr</a>
-    <a href="/cdn-cgi/l/email-protection#80e8e5ececefc0e3e1e6e6e5e9eee5ece1e2f3aee9ee"><span class="__cf_email__" data-cfemail="630b060f0f0c2300020505060a0d060f0201104d0a0d">[email&#160;protected]</span></a>
+    <a href="mailto:hello@caffeinelabs.in">hello@caffeinelabs.in</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 document.addEventListener('DOMContentLoaded',()=>{
   const hamBtn=document.getElementById('ham-btn');
   const mob=document.getElementById('mob');
   window.tm=function(){const isOpen=mob.classList.contains('open');if(isOpen){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}else{mob.classList.add('open');mob.setAttribute('aria-hidden','false');hamBtn.classList.add('open');hamBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}};
   window.cm=function(){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';};
   document.addEventListener('keydown',e=>{if(e.key==='Escape')window.cm();});
-  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.i
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+  setTimeout(()=>{document.querySelectorAll('.rv:not(.on)').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<window.innerHeight)el.classList.add('on');});},200);
+});
+</script>
+</body>
+</html>
