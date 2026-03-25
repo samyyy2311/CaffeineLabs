@@ -12,6 +12,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://caffeinelabs.in">
 <meta property="og:locale" content="en_IN">
+<!-- Favicon: espresso cup SVG inline as data URI -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E0B08'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23F0EAE0' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -19,13 +21,12 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 :root{
-  /* Deep espresso — feels like the name */
   --bg:#0E0B08;--s1:#141009;--s2:#1A140B;
   --text:#EDE8E0;
   --t2:rgba(237,232,224,0.58);--t3:rgba(237,232,224,0.32);--t4:rgba(237,232,224,0.16);
   --b1:rgba(255,255,255,0.06);--b2:rgba(255,255,255,0.1);--b3:rgba(255,255,255,0.18);
-  /* Warm amber-coffee accent */
-  --acc:#C8873A;--acc-dim:rgba(200,135,58,0.12);--acc-border:rgba(200,135,58,0.3);
+  /* Crema — espresso foam gold */
+  --acc:#F0EAE0;--acc-dim:rgba(240,234,224,0.08);--acc-border:rgba(240,234,224,0.22);
   /* Labelyze: blue */
   --lyz:#5BB8FF;--lyz-dim:rgba(91,184,255,0.08);--lyz-border:rgba(91,184,255,0.22);
   /* Rewyr: warm off-white */
@@ -37,16 +38,16 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.65}
 .bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 55% 45% at 10% 5%,rgba(200,135,58,0.08) 0%,transparent 55%),
-    radial-gradient(ellipse 40% 35% at 90% 15%,rgba(200,135,58,0.04) 0%,transparent 50%),
+    radial-gradient(ellipse 55% 45% at 10% 5%,rgba(240,234,224,0.05) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 35% at 90% 15%,rgba(240,234,224,0.02) 0%,transparent 50%),
     var(--bg)}
 body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")}
 
 /* NAV */
 nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:500;width:calc(100% - 48px);max-width:1060px;border-radius:100px;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(20,16,9,0.7);backdrop-filter:var(--blur) saturate(2);-webkit-backdrop-filter:var(--blur) saturate(2);border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.08)}
-nav::after{content:'';position:absolute;top:0;left:16%;right:16%;height:1px;background:linear-gradient(90deg,transparent,rgba(200,135,58,0.35),transparent);pointer-events:none}
-.logo-name{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.01em;text-decoration:none;position:relative;z-index:1;white-space:nowrap}
+nav::after{content:'';position:absolute;top:0;left:16%;right:16%;height:1px;background:linear-gradient(90deg,transparent,rgba(240,234,224,0.20),transparent);pointer-events:none}
+.logo-name{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--t3);letter-spacing:-0.01em;text-decoration:none;position:relative;z-index:1;white-space:nowrap}
 .logo-c{color:var(--acc)}
 .nav-links{display:flex;gap:2px;position:absolute;left:50%;transform:translateX(-50%);z-index:1}
 .nav-link{font-size:13px;font-weight:400;color:var(--t3);text-decoration:none;padding:6px 14px;border-radius:100px;transition:color .2s,background .2s;white-space:nowrap}
@@ -67,7 +68,7 @@ nav::after{content:'';position:absolute;top:0;left:16%;right:16%;height:1px;back
 
 /* HERO */
 .hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:152px 24px 80px;position:relative;z-index:2}
-.hero-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:800px;height:500px;pointer-events:none;background:radial-gradient(ellipse 50% 40% at 50% 30%,rgba(200,135,58,0.07) 0%,transparent 65%)}
+.hero-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:800px;height:500px;pointer-events:none;background:radial-gradient(ellipse 50% 40% at 50% 30%,rgba(240,234,224,0.05) 0%,transparent 65%)}
 .hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:32px;animation:fu .8s cubic-bezier(.16,1,.3,1) both;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:100px;padding:5px 16px}
 .kd{width:5px;height:5px;border-radius:50%;background:var(--acc);flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.65)}}
@@ -92,29 +93,32 @@ nav::after{content:'';position:absolute;top:0;left:16%;right:16%;height:1px;back
 .d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 
-/* PRODUCT CARDS — clean, no glowy pills */
-.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;align-items:start}
-.pcard{border-radius:var(--r);border:1px solid var(--card-border);background:var(--card-bg);transition:border-color .25s}
+/* PRODUCT CARDS — fixed layout */
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.pcard{border-radius:var(--r);border:1px solid var(--card-border);background:var(--card-bg);transition:border-color .25s;display:flex;flex-direction:column}
 .pcard:hover{border-color:rgba(255,255,255,0.14)}
-.pcard-body{padding:32px}
+.pcard-body{padding:32px;display:flex;flex-direction:column;flex:1}
+
 /* Product header */
 .pc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--b1)}
 .pc-identity{display:flex;align-items:center;gap:12px}
 .pc-mark{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fd);font-weight:700;font-size:18px}
 .pm-lyz{background:rgba(91,184,255,0.1);color:var(--lyz)}
 .pm-rwy{background:rgba(232,223,208,0.08);color:var(--rwy)}
-.pc-id-text{}
 .pc-name{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--text);letter-spacing:-0.02em;line-height:1}
 .pc-domain{font-size:10px;color:var(--t4);letter-spacing:.05em;margin-top:3px}
-.pc-status{font-size:10px;font-weight:500;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:6px;border:1px solid var(--b1);background:rgba(255,255,255,0.03)}
+.pc-status{font-size:10px;font-weight:500;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:6px;border:1px solid var(--b1);background:rgba(255,255,255,0.03);white-space:nowrap;flex-shrink:0}
+
 /* Description */
 .pc-desc{font-size:13.5px;color:var(--t2);line-height:1.7;font-weight:300;margin-bottom:20px}
-/* Bullets */
-.pc-bullets{display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
-.pc-bullet{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--t3);line-height:1.5}
-.pb-dash{flex-shrink:0;margin-top:1px;color:var(--t4);font-size:12px;line-height:1.5}
-/* Footer */
-.pc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--b1)}
+
+/* Bullets — no em dashes, proper list */
+.pc-bullets{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;flex:1}
+.pc-bullet{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--t3);line-height:1.55}
+.pb-dot{flex-shrink:0;width:4px;height:4px;border-radius:50%;background:var(--acc);opacity:0.5;margin-top:7px}
+
+/* Footer — pinned to bottom */
+.pc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--b1);margin-top:auto}
 .pc-url{font-size:10px;color:var(--t4);letter-spacing:.05em}
 .pc-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:8px 16px;border-radius:8px;text-decoration:none;color:var(--text);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);transition:all .2s;font-family:var(--fd)}
 .pc-btn svg{transition:transform .2s;flex-shrink:0}
@@ -138,7 +142,7 @@ nav::after{content:'';position:absolute;top:0;left:16%;right:16%;height:1px;back
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;position:relative}
 .contact-div{position:absolute;top:10%;bottom:10%;left:50%;width:1px;background:var(--b1)}
 .cl{padding:50px 46px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
-.cl-acc{position:absolute;top:-40px;left:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(200,135,58,0.07) 0%,transparent 65%);pointer-events:none}
+.cl-acc{position:absolute;top:-40px;left:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(240,234,224,0.05) 0%,transparent 65%);pointer-events:none}
 .ch{font-family:var(--fd);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;margin-bottom:10px;color:var(--text)}
 .cp{font-size:14px;color:var(--t2);line-height:1.8;font-weight:300;max-width:280px}
 .cr3{padding:50px 46px;display:flex;flex-direction:column;gap:8px}
@@ -160,6 +164,7 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
 .flinks a{font-size:11px;color:var(--t4);text-decoration:none;transition:color .2s}
 .flinks a:hover{color:var(--t2)}
 @keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
 @media(max-width:900px){
   nav{top:10px;left:12px;right:12px;transform:none;width:auto;max-width:none;padding:0 16px}
   .nav-links{display:none}
@@ -239,10 +244,10 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
           </div>
           <p class="pc-desc">The most detailed food label scanner for Indian consumers. Know instantly if what you are buying contains ingredients banned by EU, FDA, or WHO but sold freely in India. Free. Private. Works fully offline.</p>
           <div class="pc-bullets">
-            <div class="pc-bullet"><span class="pb-dash">—</span><span>Cross-checked against EU EFSA, US FDA, WHO Codex, Health Canada and UK FSA simultaneously</span></div>
-            <div class="pc-bullet"><span class="pb-dash">—</span><span>Personalised safety verdict based on your exact health profile and dietary conditions</span></div>
-            <div class="pc-bullet"><span class="pb-dash">—</span><span>All scan data, health profiles, and history stay on your device. Always.</span></div>
-            <div class="pc-bullet"><span class="pb-dash">—</span><span>300+ ingredients tracked. Every flag cites the regulation that triggered it.</span></div>
+            <div class="pc-bullet"><span class="pb-dot"></span><span>Cross-checked against EU EFSA, US FDA, WHO Codex, Health Canada and UK FSA simultaneously</span></div>
+            <div class="pc-bullet"><span class="pb-dot"></span><span>Personalised safety verdict based on your exact health profile and dietary conditions</span></div>
+            <div class="pc-bullet"><span class="pb-dot"></span><span>All scan data, health profiles, and history stay on your device. Always.</span></div>
+            <div class="pc-bullet"><span class="pb-dot"></span><span>300+ ingredients tracked. Every flag cites the regulation that triggered it.</span></div>
           </div>
           <div class="pc-footer">
             <span class="pc-url">labelyze.in</span>
@@ -266,10 +271,10 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
           </div>
           <p class="pc-desc">The focus app for people who already failed with softer blockers. No dismiss button. No workarounds. No cloud. The system holds the line when your motivation stops holding it.</p>
           <div class="pc-bullets">
-            <div class="pc-bullet"><span class="pb-dash">—</span><span>Strict app blocking with a cooldown on changing your own rules</span></div>
-            <div class="pc-bullet"><span class="pb-dash">—</span><span>Lock Now, Hold to End, and Why Open friction built into every session</span></div>
-            <div class="pc-bullet"><span class="pb-dash">—</span><span>Rewyr Score tracks consistency and compounds into identity over time</span></div>
-            <div class="pc-bullet"><span class="pb-dash">—</span><span>Local-first. No account. No backend. No data leaving your device.</span></div>
+            <div class="pc-bullet"><span class="pb-dot"></span><span>Strict app blocking with a cooldown on changing your own rules</span></div>
+            <div class="pc-bullet"><span class="pb-dot"></span><span>Lock Now, Hold to End, and Why Open friction built into every session</span></div>
+            <div class="pc-bullet"><span class="pb-dot"></span><span>Rewyr Score tracks consistency and compounds into identity over time</span></div>
+            <div class="pc-bullet"><span class="pb-dot"></span><span>Local-first. No account. No backend. No data leaving your device.</span></div>
           </div>
           <div class="pc-footer">
             <span class="pc-url">rewyr.in</span>
