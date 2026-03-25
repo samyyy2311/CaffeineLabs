@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CaffeineLabs — Apps Built Without Backdoors</title>
+<meta name="description" content="Building apps that work the way you intended. CaffeineLabs makes Labelyze and Rewyr.">
+<link rel="canonical" href="https://caffeinelabs.in">
+<meta name="theme-color" content="#0E0B08">
+<meta property="og:title" content="CaffeineLabs — Apps Built Without Backdoors">
+<meta property="og:description" content="Building apps that work the way you intended.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://caffeinelabs.in">
+<meta property="og:locale" content="en_IN">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+:root{
+  /* Deep espresso — feels like the name */
+  --bg:#0E0B08;--s1:#141009;--s2:#1A140B;
+  --text:#EDE8E0;
+  --t2:rgba(237,232,224,0.58);--t3:rgba(237,232,224,0.32);--t4:rgba(237,232,224,0.16);
+  --b1:rgba(255,255,255,0.06);--b2:rgba(255,255,255,0.1);--b3:rgba(255,255,255,0.18);
+  /* Warm amber-coffee accent */
+  --acc:#C8873A;--acc-dim:rgba(200,135,58,0.12);--acc-border:rgba(200,135,58,0.3);
+  /* Labelyze: blue */
+  --lyz:#5BB8FF;--lyz-dim:rgba(91,184,255,0.08);--lyz-border:rgba(91,184,255,0.22);
+  /* Rewyr: warm off-white */
+  --rwy:#E8DFD0;--rwy-dim:rgba(232,223,208,0.08);--rwy-border:rgba(232,223,208,0.22);
+  --card-bg:rgba(255,255,255,0.03);--card-border:rgba(255,255,255,0.08);
+  --blur:blur(52px);--r:14px;--nav-h:54px;
+  --fd:'Outfit',sans-serif;--fb:'DM Sans',sans-serif;
+}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.65}
+.bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 45% at 10% 5%,rgba(200,135,58,0.08) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 35% at 90% 15%,rgba(200,135,58,0.04) 0%,transparent 50%),
+    var(--bg)}
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")}
+
+/* NAV */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:500;width:calc(100% - 48px);max-width:1060px;border-radius:100px;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(20,16,9,0.7);backdrop-filter:var(--blur) saturate(2);-webkit-backdrop-filter:var(--blur) saturate(2);border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.08)}
+nav::after{content:'';position:absolute;top:0;left:16%;right:16%;height:1px;background:linear-gradient(90deg,transparent,rgba(200,135,58,0.35),transparent);pointer-events:none}
+.logo-name{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.01em;text-decoration:none;position:relative;z-index:1;white-space:nowrap}
+.logo-c{color:var(--acc)}
+.nav-links{display:flex;gap:2px;position:absolute;left:50%;transform:translateX(-50%);z-index:1}
+.nav-link{font-size:13px;font-weight:400;color:var(--t3);text-decoration:none;padding:6px 14px;border-radius:100px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,0.06)}
+.nav-r{display:flex;align-items:center;gap:8px;position:relative;z-index:1;flex-shrink:0}
+.nav-cta{font-size:12px;font-weight:600;color:#0E0B08;background:var(--acc);padding:7px 18px;border-radius:100px;text-decoration:none;font-family:var(--fd);transition:opacity .2s,transform .2s;white-space:nowrap}
+.nav-cta:hover{opacity:.88;transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer;flex-shrink:0}
+.ham span{display:block;width:18px;height:1.5px;background:var(--t3);border-radius:2px;transition:transform .25s,opacity .25s}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+#mob{display:none;position:fixed;inset:0;z-index:490;background:rgba(14,11,8,0.97);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+#mob.open{display:flex}
+#mob a{font-family:var(--fd);font-size:32px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.02em;transition:opacity .2s}
+#mob a:hover{opacity:.5}
+#mob .mob-sub{font-size:20px;opacity:.4}
+
+/* HERO */
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:152px 24px 80px;position:relative;z-index:2}
+.hero-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:800px;height:500px;pointer-events:none;background:radial-gradient(ellipse 50% 40% at 50% 30%,rgba(200,135,58,0.07) 0%,transparent 65%)}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:32px;animation:fu .8s cubic-bezier(.16,1,.3,1) both;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:100px;padding:5px 16px}
+.kd{width:5px;height:5px;border-radius:50%;background:var(--acc);flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.65)}}
+.hero h1{font-family:var(--fd);font-size:clamp(36px,7vw,88px);font-weight:700;line-height:1.06;letter-spacing:-0.025em;max-width:800px;margin:0 auto 26px;color:var(--text);animation:fu .8s .08s cubic-bezier(.16,1,.3,1) both}
+.hero-sub{font-size:16px;color:var(--t2);font-weight:300;max-width:380px;margin:0 auto 44px;line-height:1.8;animation:fu .8s .16s cubic-bezier(.16,1,.3,1) both}
+.hero-actions{display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;animation:fu .8s .24s cubic-bezier(.16,1,.3,1) both}
+.btn-p{font-size:13px;font-weight:600;color:#0E0B08;background:var(--acc);padding:12px 26px;border-radius:100px;text-decoration:none;font-family:var(--fd);transition:opacity .2s,transform .2s}
+.btn-p:hover{opacity:.88;transform:translateY(-1px)}
+.btn-g{font-size:13px;font-weight:400;color:var(--t2);padding:11px 20px;border-radius:100px;border:1px solid var(--b2);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s,border-color .2s;background:rgba(255,255,255,0.03)}
+.btn-g:hover{color:var(--text);border-color:var(--b3)}
+.btn-g svg{transition:transform .2s}
+.btn-g:hover svg{transform:translateX(3px)}
+
+/* SECTIONS */
+.section{position:relative;z-index:2;border-top:1px solid var(--b1)}
+.wrap{max-width:1060px;margin:0 auto;padding:88px 52px}
+.sec-label{font-size:10px;font-weight:600;color:var(--t3);letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.sec-label::before{content:'';width:14px;height:1px;background:var(--t4);flex-shrink:0}
+.sec-title{font-family:var(--fd);font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;margin-bottom:12px;color:var(--text)}
+.rv{opacity:0;transform:translateY(18px)}
+.rv.on{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+
+/* PRODUCT CARDS — clean, no glowy pills */
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;align-items:start}
+.pcard{border-radius:var(--r);border:1px solid var(--card-border);background:var(--card-bg);transition:border-color .25s}
+.pcard:hover{border-color:rgba(255,255,255,0.14)}
+.pcard-body{padding:32px}
+/* Product header */
+.pc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--b1)}
+.pc-identity{display:flex;align-items:center;gap:12px}
+.pc-mark{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fd);font-weight:700;font-size:18px}
+.pm-lyz{background:rgba(91,184,255,0.1);color:var(--lyz)}
+.pm-rwy{background:rgba(232,223,208,0.08);color:var(--rwy)}
+.pc-id-text{}
+.pc-name{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--text);letter-spacing:-0.02em;line-height:1}
+.pc-domain{font-size:10px;color:var(--t4);letter-spacing:.05em;margin-top:3px}
+.pc-status{font-size:10px;font-weight:500;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:6px;border:1px solid var(--b1);background:rgba(255,255,255,0.03)}
+/* Description */
+.pc-desc{font-size:13.5px;color:var(--t2);line-height:1.7;font-weight:300;margin-bottom:20px}
+/* Bullets */
+.pc-bullets{display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.pc-bullet{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--t3);line-height:1.5}
+.pb-dash{flex-shrink:0;margin-top:1px;color:var(--t4);font-size:12px;line-height:1.5}
+/* Footer */
+.pc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--b1)}
+.pc-url{font-size:10px;color:var(--t4);letter-spacing:.05em}
+.pc-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:8px 16px;border-radius:8px;text-decoration:none;color:var(--text);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);transition:all .2s;font-family:var(--fd)}
+.pc-btn svg{transition:transform .2s;flex-shrink:0}
+.pc-btn:hover{background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.16);transform:translateY(-1px)}
+.pc-btn:hover svg{transform:translateX(3px)}
+
+/* MISSION */
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.mission-pull{font-family:var(--fd);font-size:clamp(26px,3.2vw,44px);font-weight:700;line-height:1.14;letter-spacing:-0.025em;color:var(--text);margin-bottom:28px}
+.mission-p{font-size:14px;color:var(--t2);line-height:1.9;font-weight:300}
+.mission-p b{color:var(--text);font-weight:500}
+.principles{display:flex;flex-direction:column}
+.principle{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--b1)}
+.principle:first-child{border-top:1px solid var(--b1)}
+.pr-n{font-family:var(--fd);font-size:11px;font-weight:600;color:var(--acc);letter-spacing:.06em;padding-top:2px;flex-shrink:0;width:20px}
+.pr-t{font-family:var(--fd);font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.pr-d{font-size:12.5px;color:var(--t3);line-height:1.65;font-weight:300}
+
+/* CONTACT */
+.contact-shell{border-radius:var(--r);overflow:hidden;margin-top:48px;border:1px solid var(--card-border);background:var(--card-bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;position:relative}
+.contact-div{position:absolute;top:10%;bottom:10%;left:50%;width:1px;background:var(--b1)}
+.cl{padding:50px 46px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.cl-acc{position:absolute;top:-40px;left:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(200,135,58,0.07) 0%,transparent 65%);pointer-events:none}
+.ch{font-family:var(--fd);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;margin-bottom:10px;color:var(--text)}
+.cp{font-size:14px;color:var(--t2);line-height:1.8;font-weight:300;max-width:280px}
+.cr3{padding:50px 46px;display:flex;flex-direction:column;gap:8px}
+.clink{display:flex;align-items:center;gap:13px;padding:13px 14px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);text-decoration:none;transition:background .2s,border-color .2s}
+.clink:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12)}
+.ci{width:34px;height:34px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)}
+.ct strong{display:block;font-family:var(--fd);font-size:13px;font-weight:600;color:var(--text)}
+.ct span{font-size:11px;color:var(--t3)}
+.ca{margin-left:auto;color:var(--t4)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;position:relative;z-index:2}
+.fl{display:flex;align-items:center;gap:12px}
+.f-logo{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--t3);text-decoration:none}
+.f-logo span{color:var(--acc)}
+.f-sep{color:var(--b2)}
+.f-copy{font-size:10px;color:var(--t4);letter-spacing:.04em}
+.flinks{display:flex;gap:20px;flex-wrap:wrap}
+.flinks a{font-size:11px;color:var(--t4);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--t2)}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media(max-width:900px){
+  nav{top:10px;left:12px;right:12px;transform:none;width:auto;max-width:none;padding:0 16px}
+  .nav-links{display:none}
+  .ham{display:flex}
+  .nav-cta{display:none}
+  .wrap{padding:56px 20px}
+  .products-grid{grid-template-columns:1fr;gap:12px}
+  .mission-grid{grid-template-columns:1fr;gap:40px}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-div{display:none}
+  footer{flex-direction:column;align-items:flex-start;padding:22px 20px}
+  .hero{padding:88px 20px 52px}
+  .flinks{gap:14px}
+  .cl,.cr3{padding:28px 22px}
+}
+@media(max-width:520px){
+  .hero h1{font-size:34px}
+  .hero-actions{flex-direction:column;width:100%}
+  .btn-p,.btn-g{width:100%;justify-content:center}
+  .pcard-body{padding:24px 18px}
+  .mission-pull{font-size:26px}
+}
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+<div id="mob" aria-hidden="true">
+  <a href="#products" onclick="cm()">Products</a>
+  <a href="#mission" onclick="cm()">Mission</a>
+  <a href="#contact" onclick="cm()">Contact</a>
+  <a href="#contact" onclick="cm()" class="mob-sub">Get In Touch</a>
+</div>
+<nav>
+  <a href="#" class="logo-name"><span class="logo-c">Caffeine</span>Labs</a>
+  <div class="nav-links">
+    <a href="#products" class="nav-link">Products</a>
+    <a href="#mission" class="nav-link">Mission</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-r">
+    <a href="#contact" class="nav-cta">Get In Touch</a>
+    <button class="ham" id="ham-btn" onclick="tm()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-kicker"><span class="kd"></span>CaffeineLabs &nbsp;·&nbsp; Est. 2026</div>
+  <h1>Building apps that work<br>the way you intended.</h1>
+  <p class="hero-sub">Two products. Both solve problems that were designed to go unnoticed.</p>
+  <div class="hero-actions">
+    <a href="#products" class="btn-p">Our Products</a>
+    <a href="#mission" class="btn-g">Our Mission <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+</section>
+
+<div class="section" id="products">
+  <div class="wrap">
+    <div class="sec-label rv">Our Products</div>
+    <h2 class="sec-title rv d1">Two products. Both matter.</h2>
+    <div class="products-grid">
+
+      <!-- LABELYZE -->
+      <div class="pcard rv d1">
+        <div class="pcard-body">
+          <div class="pc-header">
+            <div class="pc-identity">
+              <div class="pc-mark pm-lyz">L</div>
+              <div class="pc-id-text">
+                <div class="pc-name">Labelyze</div>
+                <div class="pc-domain">labelyze.in</div>
+              </div>
+            </div>
+            <span class="pc-status">Live · Android</span>
+          </div>
+          <p class="pc-desc">The most detailed food label scanner for Indian consumers. Know instantly if what you are buying contains ingredients banned by EU, FDA, or WHO but sold freely in India. Free. Private. Works fully offline.</p>
+          <div class="pc-bullets">
+            <div class="pc-bullet"><span class="pb-dash">—</span><span>Cross-checked against EU EFSA, US FDA, WHO Codex, Health Canada and UK FSA simultaneously</span></div>
+            <div class="pc-bullet"><span class="pb-dash">—</span><span>Personalised safety verdict based on your exact health profile and dietary conditions</span></div>
+            <div class="pc-bullet"><span class="pb-dash">—</span><span>All scan data, health profiles, and history stay on your device. Always.</span></div>
+            <div class="pc-bullet"><span class="pb-dash">—</span><span>300+ ingredients tracked. Every flag cites the regulation that triggered it.</span></div>
+          </div>
+          <div class="pc-footer">
+            <span class="pc-url">labelyze.in</span>
+            <a href="https://labelyze.in" target="_blank" rel="noopener" class="pc-btn">Visit Labelyze <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- REWYR -->
+      <div class="pcard rv d2">
+        <div class="pcard-body">
+          <div class="pc-header">
+            <div class="pc-identity">
+              <div class="pc-mark pm-rwy">R</div>
+              <div class="pc-id-text">
+                <div class="pc-name">Rewyr</div>
+                <div class="pc-domain">rewyr.in</div>
+              </div>
+            </div>
+            <span class="pc-status">Building · 2026</span>
+          </div>
+          <p class="pc-desc">The focus app for people who already failed with softer blockers. No dismiss button. No workarounds. No cloud. The system holds the line when your motivation stops holding it.</p>
+          <div class="pc-bullets">
+            <div class="pc-bullet"><span class="pb-dash">—</span><span>Strict app blocking with a cooldown on changing your own rules</span></div>
+            <div class="pc-bullet"><span class="pb-dash">—</span><span>Lock Now, Hold to End, and Why Open friction built into every session</span></div>
+            <div class="pc-bullet"><span class="pb-dash">—</span><span>Rewyr Score tracks consistency and compounds into identity over time</span></div>
+            <div class="pc-bullet"><span class="pb-dash">—</span><span>Local-first. No account. No backend. No data leaving your device.</span></div>
+          </div>
+          <div class="pc-footer">
+            <span class="pc-url">rewyr.in</span>
+            <a href="https://rewyr.in" target="_blank" rel="noopener" class="pc-btn">Visit Rewyr <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section" id="mission">
+  <div class="wrap">
+    <div class="mission-grid">
+      <div class="rv">
+        <div class="sec-label">The Studio</div>
+        <p class="mission-pull">Not chasing scale.<br>Chasing correctness.</p>
+        <p class="mission-p">Both products exist because tools that were supposed to help had exits built in. An ignore button on your screen time app. An ingredient list engineered to hide what's inside. We build without those. Every Rewyr block was set by you when you were thinking clearly. Every Labelyze flag cites the exact regulation that triggered it. <b>We enforce. We don't decide.</b></p>
+      </div>
+      <div class="rv d1">
+        <div class="sec-label" style="margin-bottom:0">What We Stand For</div>
+        <div class="principles">
+          <div class="principle"><span class="pr-n">01</span><div><div class="pr-t">No Exits Built In</div><p class="pr-d">Every escape route in an app is a decision made against you. We don't build those.</p></div></div>
+          <div class="principle"><span class="pr-n">02</span><div><div class="pr-t">On-Device by Build, Not by Policy</div><p class="pr-d">Policies change. Architecture doesn't. Your data never leaves your phone because we designed it that way from day one.</p></div></div>
+          <div class="principle"><span class="pr-n">03</span><div><div class="pr-t">Every Claim Has a Source</div><p class="pr-d">We don't flag things without evidence. Every Labelyze alert cites a regulation. Every Rewyr block was set by you.</p></div></div>
+          <div class="principle"><span class="pr-n">04</span><div><div class="pr-t">Built for India, Not Adapted for It</div><p class="pr-d">Both products were designed for this market from day one. Not ported from somewhere else and made to fit.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="contact">
+  <div class="wrap">
+    <div class="sec-label rv">Get In Touch</div>
+    <h2 class="sec-title rv d1">We read every message.</h2>
+    <div class="contact-shell rv d2">
+      <div class="contact-grid">
+        <div class="contact-div"></div>
+        <div class="cl">
+          <div class="cl-acc"></div>
+          <h3 class="ch">Say hello.</h3>
+          <p class="cp">Feedback, waitlist signups, or just a question. We read everything and reply.</p>
+        </div>
+        <div class="cr3">
+          <a href="mailto:hello@caffeinelabs.in" class="clink">
+            <div class="ci"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="color:rgba(237,232,224,0.4)"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
+            <div class="ct"><strong>Email Us</strong><span>hello&#64;caffeinelabs.in</span></div>
+            <svg class="ca" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://labelyze.in" target="_blank" rel="noopener" class="clink">
+            <div class="ci" style="color:var(--lyz);font-family:var(--fd);font-weight:700;font-size:14px">L</div>
+            <div class="ct"><strong>Labelyze</strong><span>labelyze.in</span></div>
+            <svg class="ca" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://rewyr.in" target="_blank" rel="noopener" class="clink">
+            <div class="ci" style="color:var(--rwy);font-family:var(--fd);font-weight:700;font-size:14px">R</div>
+            <div class="ct"><strong>Rewyr</strong><span>rewyr.in</span></div>
+            <svg class="ca" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fl">
+    <a href="#" class="f-logo"><span>Caffeine</span>Labs</a>
+    <span class="f-sep">·</span>
+    <span class="f-copy">2026 · India</span>
+  </div>
+  <div class="flinks">
+    <a href="https://labelyze.in" target="_blank" rel="noopener">Labelyze</a>
+    <a href="https://rewyr.in" target="_blank" rel="noopener">Rewyr</a>
+    <a href="mailto:hello@caffeinelabs.in">hello&#64;caffeinelabs.in</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var hamBtn=document.getElementById('ham-btn');
+  var mob=document.getElementById('mob');
+  window.tm=function(){
+    var o=mob.classList.contains('open');
+    if(o){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+    else{mob.classList.add('open');mob.setAttribute('aria-hidden','false');hamBtn.classList.add('open');hamBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  };
+  window.cm=function(){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';};
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')window.cm();});
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
+  },{threshold:0,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+  setTimeout(function(){
+    document.querySelectorAll('.rv:not(.on)').forEach(function(el){
+      if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('on');
+    });
+  },300);
+})();
+</script>
+</body>
+</html>
