@@ -3,213 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caffeine Labs — Apps Built Without Backdoors</title>
-<meta name="description" content="Building apps that work the way you intended. Caffeine Labs makes Labelyze and Rewyr.">
+<title>CaffeineLabs — Apps Built Without Backdoors</title>
+<meta name="description" content="Building apps that work the way you intended. CaffeineLabs makes Labelyze and Rewyr.">
 <link rel="canonical" href="https://caffeinelabs.in">
-<meta name="theme-color" content="#080A0F">
-<meta property="og:title" content="Caffeine Labs — Apps Built Without Backdoors">
+<meta name="theme-color" content="#09100F">
+<meta property="og:title" content="CaffeineLabs — Apps Built Without Backdoors">
 <meta property="og:description" content="Building apps that work the way you intended.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://caffeinelabs.in">
 <meta property="og:locale" content="en_IN">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23080A0F'/%3E%3Ctext x='16' y='16' dominant-baseline='central' text-anchor='middle' font-family='system-ui' font-weight='900' font-size='18' fill='rgba(200%2C210%2C255%2C0.6)'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 :root{
-  --bg:#080A0F;
-  --s1:#0D1018;--s2:#111520;
-  --text:#E8EAF0;
-  --t2:rgba(232,234,240,0.58);--t3:rgba(232,234,240,0.32);--t4:rgba(232,234,240,0.16);
+  --bg:#09100F;--s1:#0D1512;--s2:#111B17;
+  --text:#E6EDE8;
+  --t2:rgba(230,237,232,0.58);--t3:rgba(230,237,232,0.32);--t4:rgba(230,237,232,0.16);
   --b1:rgba(255,255,255,0.06);--b2:rgba(255,255,255,0.1);--b3:rgba(255,255,255,0.18);
-  /* Indigo/violet accent for Caffeine Labs */
-  --acc:#7B8CFF;--acc2:rgba(123,140,255,0.12);--acc-border:rgba(123,140,255,0.3);
-  /* Per-product accents */
-  --lyz:#5BB8FF;--lyz-dim:rgba(91,184,255,0.12);--lyz-border:rgba(91,184,255,0.3);
-  --rwy:#A78BFA;--rwy-dim:rgba(167,139,250,0.12);--rwy-border:rgba(167,139,250,0.3);
-  --card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.1);
+  --acc:#52C98A;--acc2:rgba(82,201,138,0.1);--acc-border:rgba(82,201,138,0.28);
+  --lyz:#5BB8FF;--lyz-dim:rgba(91,184,255,0.1);--lyz-border:rgba(91,184,255,0.28);
+  --rwy:#F0C97A;--rwy-dim:rgba(240,201,122,0.1);--rwy-border:rgba(240,201,122,0.28);
+  --card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.09);
   --blur:blur(52px);--r:16px;--nav-h:54px;
-  --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+  --fd:'Outfit',sans-serif;--fb:'DM Sans',sans-serif;
 }
 body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.65}
-
-/* Atmospheric background */
 .bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 50% at 20% 10%,rgba(123,140,255,0.07) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 40% at 80% 20%,rgba(91,184,255,0.05) 0%,transparent 55%),
-    radial-gradient(ellipse 40% 35% at 50% 80%,rgba(167,139,250,0.04) 0%,transparent 55%),
-    var(--bg);
-}
-body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E")}
-
-/* ──────────────────── NAV ──────────────────── */
-nav{
-  position:fixed;top:14px;left:50%;transform:translateX(-50%);
-  z-index:500;width:calc(100% - 48px);max-width:1060px;
-  border-radius:100px;height:var(--nav-h);
-  display:flex;align-items:center;justify-content:space-between;padding:0 22px;
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:var(--blur) saturate(2.2);
-  -webkit-backdrop-filter:var(--blur) saturate(2.2);
-  border:1px solid var(--card-border);
-  box-shadow:0 8px 40px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.14);
-  position:fixed;
-}
-nav::before{content:'';position:absolute;inset:0;border-radius:100px;pointer-events:none;background:linear-gradient(145deg,rgba(255,255,255,0.09) 0%,transparent 55%)}
-nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);pointer-events:none}
-
-.logo-name{font-family:var(--fd);font-size:14px;font-weight:800;color:var(--text);letter-spacing:-0.02em;text-decoration:none;position:relative;z-index:1;white-space:nowrap}
+  background:radial-gradient(ellipse 60% 50% at 15% 10%,rgba(82,201,138,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 45% 40% at 85% 20%,rgba(91,184,255,0.04) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 35% at 50% 85%,rgba(240,201,122,0.04) 0%,transparent 55%),var(--bg)}
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E")}
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:500;width:calc(100% - 48px);max-width:1060px;border-radius:100px;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,0.05);backdrop-filter:var(--blur) saturate(2);-webkit-backdrop-filter:var(--blur) saturate(2);border:1px solid var(--card-border);box-shadow:0 8px 40px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.1)}
+nav::before{content:'';position:absolute;inset:0;border-radius:100px;pointer-events:none;background:linear-gradient(145deg,rgba(255,255,255,0.07) 0%,transparent 55%)}
+nav::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);pointer-events:none}
+.logo-name{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.01em;text-decoration:none;position:relative;z-index:1;white-space:nowrap}
+.logo-name span{color:var(--acc)}
 .nav-links{display:flex;gap:2px;position:absolute;left:50%;transform:translateX(-50%);z-index:1}
 .nav-link{font-size:13px;font-weight:400;color:var(--t2);text-decoration:none;padding:6px 14px;border-radius:100px;transition:color .2s,background .2s;white-space:nowrap}
 .nav-link:hover{color:var(--text);background:rgba(255,255,255,0.07)}
 .nav-r{display:flex;align-items:center;gap:8px;position:relative;z-index:1;flex-shrink:0}
-.nav-cta{font-size:12px;font-weight:700;color:var(--bg);background:var(--text);padding:7px 18px;border-radius:100px;text-decoration:none;transition:opacity .2s,transform .2s;white-space:nowrap;font-family:var(--fd)}
+.nav-cta{font-size:12px;font-weight:600;color:#09100F;background:var(--acc);padding:7px 18px;border-radius:100px;text-decoration:none;font-family:var(--fd);transition:opacity .2s,transform .2s;white-space:nowrap}
 .nav-cta:hover{opacity:.86;transform:translateY(-1px)}
-
 .ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer;flex-shrink:0}
 .ham span{display:block;width:18px;height:1.5px;background:var(--t2);border-radius:2px;transition:transform .25s,opacity .25s}
 .ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0}
 .ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-
-#mob{display:none;position:fixed;inset:0;z-index:490;background:rgba(8,10,15,0.97);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+#mob{display:none;position:fixed;inset:0;z-index:490;background:rgba(9,16,15,0.97);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);flex-direction:column;align-items:center;justify-content:center;gap:28px}
 #mob.open{display:flex}
-#mob a{font-family:var(--fd);font-size:32px;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-0.04em;transition:opacity .2s}
+#mob a{font-family:var(--fd);font-size:32px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.02em;transition:opacity .2s}
 #mob a:hover{opacity:.5}
-#mob .mob-sub{opacity:.4;font-size:20px}
-
-/* ──────────────────── HERO ──────────────────── */
-.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:156px 24px 80px;position:relative;z-index:2}
-.hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:600px;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 50% 30%,rgba(123,140,255,0.08) 0%,transparent 65%)}
-
-.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:32px;animation:fu .8s cubic-bezier(.16,1,.3,1) both;background:rgba(255,255,255,0.05);border:1px solid var(--card-border);border-radius:100px;padding:5px 16px}
+#mob .mob-sub{font-size:20px;opacity:.4}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:152px 24px 80px;position:relative;z-index:2}
+.hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:600px;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 50% 30%,rgba(82,201,138,0.07) 0%,transparent 65%)}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:32px;animation:fu .8s cubic-bezier(.16,1,.3,1) both;background:rgba(255,255,255,0.04);border:1px solid var(--card-border);border-radius:100px;padding:5px 16px}
 .kd{width:5px;height:5px;border-radius:50%;background:var(--acc);box-shadow:0 0 8px var(--acc);flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.65)}}
-
-.hero h1{font-family:var(--fd);font-size:clamp(38px,7.5vw,96px);font-weight:800;line-height:1.05;letter-spacing:-0.03em;max-width:820px;margin:0 auto 28px;color:var(--text);animation:fu .8s .08s cubic-bezier(.16,1,.3,1) both}
+.hero h1{font-family:var(--fd);font-size:clamp(36px,7vw,90px);font-weight:700;line-height:1.06;letter-spacing:-0.025em;max-width:800px;margin:0 auto 26px;color:var(--text);animation:fu .8s .08s cubic-bezier(.16,1,.3,1) both}
 .hero-sub{font-size:16px;color:var(--t2);font-weight:300;max-width:380px;margin:0 auto 44px;line-height:1.8;animation:fu .8s .16s cubic-bezier(.16,1,.3,1) both}
 .hero-actions{display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;animation:fu .8s .24s cubic-bezier(.16,1,.3,1) both}
-.btn-p{font-size:13px;font-weight:700;color:var(--bg);background:var(--text);padding:12px 26px;border-radius:100px;text-decoration:none;transition:opacity .2s,transform .2s;font-family:var(--fd)}
+.btn-p{font-size:13px;font-weight:600;color:#09100F;background:var(--acc);padding:12px 26px;border-radius:100px;text-decoration:none;font-family:var(--fd);transition:opacity .2s,transform .2s}
 .btn-p:hover{opacity:.86;transform:translateY(-1px)}
 .btn-g{font-size:13px;font-weight:400;color:var(--t2);padding:11px 20px;border-radius:100px;border:1px solid var(--b2);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s,border-color .2s;background:var(--card-bg)}
 .btn-g:hover{color:var(--text);border-color:var(--b3)}
-.btn-g svg{transition:transform .2s;flex-shrink:0}
+.btn-g svg{transition:transform .2s}
 .btn-g:hover svg{transform:translateX(3px)}
-
-/* ──────────────────── SECTIONS ──────────────────── */
 .section{position:relative;z-index:2;border-top:1px solid var(--b1)}
 .wrap{max-width:1060px;margin:0 auto;padding:88px 52px}
 .sec-label{font-size:10px;font-weight:600;color:var(--t3);letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .sec-label::before{content:'';width:14px;height:1px;background:var(--t4);flex-shrink:0}
-.sec-title{font-family:var(--fd);font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-0.03em;line-height:1.08;margin-bottom:12px;color:var(--text)}
-
-/* Scroll reveal */
+.sec-title{font-family:var(--fd);font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;margin-bottom:12px;color:var(--text)}
 .rv{opacity:0;transform:translateY(18px)}
 .rv.on{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
-
-/* ──────────────────── PRODUCT CARDS ──────────────────── */
 .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;align-items:stretch}
 .pcard{border-radius:var(--r);overflow:hidden;position:relative;display:flex;flex-direction:column;border:1px solid var(--card-border);transition:border-color .25s}
-.pcard:hover{border-color:rgba(255,255,255,0.2)}
+.pcard:hover{border-color:rgba(255,255,255,0.18)}
 .pcard::before{content:'';position:absolute;inset:0;pointer-events:none;background:var(--card-bg);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur)}
-.pcard::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);pointer-events:none;z-index:3}
+.pcard::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);pointer-events:none;z-index:3}
 .pcard-body{position:relative;z-index:1;padding:36px;flex:1;display:flex;flex-direction:column}
-.pcard:hover .pcard-body{background:rgba(255,255,255,.025)}
-
-/* Shine on hover */
-.pcard-shine{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.03) 50%,transparent 65%);transform:translateX(-110%);transition:transform .7s ease}
+.pcard-shine{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.025) 50%,transparent 65%);transform:translateX(-110%);transition:transform .7s ease}
 .pcard:hover .pcard-shine{transform:translateX(110%)}
-
 .pc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}
 .pc-brand{display:flex;align-items:center;gap:12px}
-.p-mark{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
-.pm-lyz{border-color:var(--lyz-border);background:var(--lyz-dim)}
-.pm-rwy{border-color:var(--rwy-border);background:var(--rwy-dim)}
+.p-mark{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pm-lyz{background:var(--lyz-dim);border:1px solid var(--lyz-border)}
+.pm-rwy{background:var(--rwy-dim);border:1px solid var(--rwy-border)}
 .pc-brand-name{display:flex;flex-direction:column;line-height:1}
-.pc-name{font-family:var(--fd);font-size:20px;font-weight:800;color:var(--text);letter-spacing:-.03em}
+.pc-name{font-family:var(--fd);font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
 .pc-domain{font-size:10px;color:var(--t3);letter-spacing:.04em;margin-top:4px}
 .pc-status{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:500;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-.ps-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.38);animation:pulse 2.4s ease-in-out infinite}
+.ps-dot{width:6px;height:6px;border-radius:50%;animation:pulse 2.4s ease-in-out infinite}
+.ps-live{background:var(--acc);box-shadow:0 0 6px var(--acc)}
+.ps-build{background:rgba(255,255,255,.35)}
 .pc-desc{font-size:14px;color:var(--t2);line-height:1.75;font-weight:300;margin-bottom:20px}
-.pc-bullets{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;flex:1}
+.pc-bullets{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;flex:1}
 .pc-bullet{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--t2);line-height:1.55}
-.pb-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:7px;background:rgba(255,255,255,.32)}
-.pc-meta{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);margin-bottom:24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.pc-meta-dot{opacity:.45;user-select:none}
+.pb-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:7px}
+.pb-lyz{background:var(--lyz);opacity:.7}
+.pb-rwy{background:var(--rwy);opacity:.7}
+.pc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.pc-tag{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;border:.5px solid}
+.pt-lyz{color:var(--lyz);border-color:rgba(91,184,255,.28);background:rgba(91,184,255,.07)}
+.pt-rwy{color:var(--rwy);border-color:rgba(240,201,122,.28);background:rgba(240,201,122,.07)}
+.pt-neu{color:var(--t3);border-color:var(--b2);background:rgba(255,255,255,.04)}
 .pc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);margin-top:auto}
 .pc-url{font-size:10px;color:var(--t4);letter-spacing:.05em}
-.pc-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:9px 18px;border-radius:100px;text-decoration:none;color:var(--text);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:all .22s;font-family:var(--fd)}
+.pc-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:9px 18px;border-radius:100px;text-decoration:none;color:var(--text);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:all .22s;font-family:var(--fd)}
 .pc-btn svg{transition:transform .2s;flex-shrink:0}
-.pc-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);transform:translateY(-1px)}
+.pc-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);transform:translateY(-1px)}
 .pc-btn:hover svg{transform:translateX(3px)}
-
-/* Colored bottom accent bar */
-.pcard-lyz .pcard-body::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--lyz),transparent);opacity:.5;pointer-events:none}
-.pcard-rwy .pcard-body::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--rwy),transparent);opacity:.5;pointer-events:none}
-
-/* ──────────────────── MISSION ──────────────────── */
 .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.mission-pull{font-family:var(--fd);font-size:clamp(28px,3.4vw,46px);font-weight:700;line-height:1.14;letter-spacing:-0.03em;color:var(--text);margin-bottom:32px}
+.mission-pull{font-family:var(--fd);font-size:clamp(26px,3.2vw,44px);font-weight:700;line-height:1.14;letter-spacing:-0.025em;color:var(--text);margin-bottom:28px}
 .mission-p{font-size:14px;color:var(--t2);line-height:1.9;font-weight:300}
 .mission-p b{color:var(--text);font-weight:500}
 .principles{display:flex;flex-direction:column}
 .principle{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--b1)}
 .principle:first-child{border-top:1px solid var(--b1)}
-.pr-n{font-size:11px;font-weight:600;color:var(--acc);letter-spacing:.06em;padding-top:2px;flex-shrink:0;width:20px;font-family:var(--fd)}
-.pr-t{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.01em;margin-bottom:4px}
+.pr-n{font-family:var(--fd);font-size:11px;font-weight:600;color:var(--acc);letter-spacing:.06em;padding-top:2px;flex-shrink:0;width:20px}
+.pr-t{font-family:var(--fd);font-size:13px;font-weight:600;color:var(--text);letter-spacing:-0.01em;margin-bottom:4px}
 .pr-d{font-size:12.5px;color:var(--t3);line-height:1.65;font-weight:300}
-
-/* ──────────────────── CONTACT ──────────────────── */
 .contact-shell{border-radius:var(--r);overflow:hidden;margin-top:48px;border:1px solid var(--card-border);position:relative}
 .contact-shell::before{content:'';position:absolute;inset:0;pointer-events:none;background:var(--card-bg);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur)}
-.contact-shell::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);pointer-events:none;z-index:2}
+.contact-shell::after{content:'';position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);pointer-events:none;z-index:2}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;position:relative;z-index:1}
 .contact-div{position:absolute;top:10%;bottom:10%;left:50%;width:1px;background:var(--b1)}
 .cl{padding:50px 46px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
-.cl-glow{position:absolute;top:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(123,140,255,.07) 0%,transparent 65%);pointer-events:none}
-.ch{font-family:var(--fd);font-size:clamp(28px,3vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px;color:var(--text)}
+.cl-glow{position:absolute;top:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(82,201,138,.06) 0%,transparent 65%);pointer-events:none}
+.ch{font-family:var(--fd);font-size:clamp(26px,3vw,38px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;margin-bottom:12px;color:var(--text)}
 .cp{font-size:14px;color:var(--t2);line-height:1.8;font-weight:300;max-width:320px}
 .cr3{padding:50px 46px;display:flex;flex-direction:column;gap:8px}
-.clink{display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
-.clink:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);transform:translateY(-1px)}
-.ci{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.clink{display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
+.clink:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.13);transform:translateY(-1px)}
+.ci{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09)}
 .ci-lyz{border-color:var(--lyz-border);background:var(--lyz-dim)}
 .ci-rwy{border-color:var(--rwy-border);background:var(--rwy-dim)}
-.ct strong{display:block;font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.01em;font-family:var(--fd)}
+.ct strong{display:block;font-family:var(--fd);font-size:13px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
 .ct span{font-size:11px;color:var(--t3)}
 .ca{margin-left:auto;color:var(--t4)}
-
-/* ──────────────────── FOOTER ──────────────────── */
 footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;position:relative;z-index:2}
 .fl{display:flex;align-items:center;gap:12px}
-.f-logo{font-family:var(--fd);font-size:13px;font-weight:800;color:var(--t2);text-decoration:none;letter-spacing:-.02em}
+.f-logo{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--t2);text-decoration:none;letter-spacing:-0.01em}
+.f-logo span{color:var(--acc)}
 .f-sep{color:var(--b2)}
 .f-copy{font-size:10px;color:var(--t4);letter-spacing:.04em}
 .flinks{display:flex;gap:20px;flex-wrap:wrap}
 .flinks a{font-size:11px;color:var(--t4);text-decoration:none;transition:color .2s}
 .flinks a:hover{color:var(--t2)}
-
 @keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-
-/* ──────────────────── RESPONSIVE ──────────────────── */
 @media(max-width:900px){
-  /* Critical: use inset instead of transform for mobile nav to avoid overflow */
-  nav{
-    top:10px;
-    left:12px;
-    right:12px;
-    /* Reset the desktop centering transform */
-    transform:none;
-    width:auto;
-    max-width:none;
-    padding:0 16px;
-  }
+  nav{top:10px;left:12px;right:12px;transform:none;width:auto;max-width:none;padding:0 16px}
   .nav-links{display:none}
   .ham{display:flex}
   .nav-cta{display:none}
@@ -224,7 +172,7 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
   .cl,.cr3{padding:28px 22px}
 }
 @media(max-width:520px){
-  .hero h1{font-size:34px;letter-spacing:-0.02em}
+  .hero h1{font-size:34px}
   .hero-actions{flex-direction:column;width:100%}
   .btn-p,.btn-g{width:100%;justify-content:center}
   .pcard-body{padding:24px 20px}
@@ -234,16 +182,14 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
 </head>
 <body>
 <div class="bg-mesh"></div>
-
 <div id="mob" aria-hidden="true">
   <a href="#products" onclick="cm()">Products</a>
   <a href="#mission" onclick="cm()">Mission</a>
   <a href="#contact" onclick="cm()">Contact</a>
   <a href="#contact" onclick="cm()" class="mob-sub">Get In Touch</a>
 </div>
-
 <nav>
-  <a href="#" class="logo-name">Caffeine Labs</a>
+  <a href="#" class="logo-name">Caffeine<span>Labs</span></a>
   <div class="nav-links">
     <a href="#products" class="nav-link">Products</a>
     <a href="#mission" class="nav-link">Mission</a>
@@ -256,125 +202,112 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
     </button>
   </div>
 </nav>
-
 <section class="hero">
   <div class="hero-glow"></div>
-  <div class="hero-kicker"><span class="kd"></span>Caffeine Labs &nbsp;·&nbsp; Est. 2026</div>
+  <div class="hero-kicker"><span class="kd"></span>CaffeineLabs &nbsp;·&nbsp; Est. 2026</div>
   <h1>Building apps that work<br>the way you intended.</h1>
-  <p class="hero-sub">We make two things. Both solve problems that were designed to go unnoticed.</p>
+  <p class="hero-sub">Two products. Both solve problems that were designed to go unnoticed.</p>
   <div class="hero-actions">
     <a href="#products" class="btn-p">Our Products</a>
-    <a href="#mission" class="btn-g">Our Mission<svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="#mission" class="btn-g">Our Mission <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </section>
-
 <div class="section" id="products">
   <div class="wrap">
     <div class="sec-label rv">Our Products</div>
     <h2 class="sec-title rv d1">Two products. Both matter.</h2>
     <div class="products-grid">
-
-      <!-- Labelyze -->
-      <div class="pcard pcard-lyz rv d1">
+      <div class="pcard rv d1">
         <div class="pcard-shine"></div>
         <div class="pcard-body">
           <div class="pc-top">
             <div class="pc-brand">
               <div class="p-mark pm-lyz">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Syne,system-ui,sans-serif" font-weight="800" font-size="22" fill="#5BB8FF">L</text>
-                </svg>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Outfit,sans-serif" font-weight="700" font-size="22" fill="#5BB8FF">L</text></svg>
               </div>
               <div class="pc-brand-name">
                 <span class="pc-name">Labelyze</span>
                 <span class="pc-domain">labelyze.in</span>
               </div>
             </div>
-            <div class="pc-status"><span class="ps-dot"></span>Live · Android</div>
+            <div class="pc-status"><span class="ps-dot ps-live"></span>Live · Android</div>
           </div>
-          <p class="pc-desc">The most detailed food label scanner for Indian consumers. Know instantly if what you are buying contains ingredients banned by EU, FDA, or WHO but sold freely here.</p>
+          <p class="pc-desc">The most detailed food label scanner for Indian consumers. Know instantly if what you are buying contains ingredients banned by EU, FDA, or WHO but sold freely in India. Free. Private. Works fully offline.</p>
           <div class="pc-bullets">
-            <div class="pc-bullet"><span class="pb-dot"></span>Cross-checked against EU EFSA, US FDA, WHO Codex, Health Canada and UK FSA</div>
-            <div class="pc-bullet"><span class="pb-dot"></span>Every scan runs on your device. Your data never leaves.</div>
-            <div class="pc-bullet"><span class="pb-dot"></span>Personalised safety verdict based on your health profile, every time</div>
+            <div class="pc-bullet"><span class="pb-dot pb-lyz"></span>Cross-checked against EU EFSA, US FDA, WHO Codex, Health Canada and UK FSA simultaneously</div>
+            <div class="pc-bullet"><span class="pb-dot pb-lyz"></span>Personalised safety verdict based on your exact health profile and dietary conditions</div>
+            <div class="pc-bullet"><span class="pb-dot pb-lyz"></span>All scan data, health profiles, and history stay on your device. Always.</div>
+            <div class="pc-bullet"><span class="pb-dot pb-lyz"></span>300+ ingredients tracked. Every flag cites the regulation that triggered it.</div>
           </div>
-          <div class="pc-meta">Android <span class="pc-meta-dot">·</span> Consumer Health <span class="pc-meta-dot">·</span> Privacy First <span class="pc-meta-dot">·</span> AI Powered</div>
+          <div class="pc-tags">
+            <span class="pc-tag pt-lyz">Android</span>
+            <span class="pc-tag pt-lyz">Offline First</span>
+            <span class="pc-tag pt-lyz">Privacy First</span>
+            <span class="pc-tag pt-neu">Free</span>
+          </div>
           <div class="pc-footer">
             <span class="pc-url">labelyze.in</span>
             <a href="https://labelyze.in" target="_blank" rel="noopener" class="pc-btn">Visit Labelyze <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
         </div>
       </div>
-
-      <!-- Rewyr -->
-      <div class="pcard pcard-rwy rv d2">
+      <div class="pcard rv d2">
         <div class="pcard-shine"></div>
         <div class="pcard-body">
           <div class="pc-top">
             <div class="pc-brand">
               <div class="p-mark pm-rwy">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Syne,system-ui,sans-serif" font-weight="800" font-size="22" fill="#A78BFA">R</text>
-                </svg>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Outfit,sans-serif" font-weight="700" font-size="22" fill="#F0C97A">R</text></svg>
               </div>
               <div class="pc-brand-name">
                 <span class="pc-name">Rewyr</span>
                 <span class="pc-domain">rewyr.in</span>
               </div>
             </div>
-            <div class="pc-status"><span class="ps-dot"></span>Building · 2026</div>
+            <div class="pc-status"><span class="ps-dot ps-build"></span>Building · 2026</div>
           </div>
-          <p class="pc-desc">The strictest focus app for Android. No dismiss button. No workarounds. Guardians approve every unlock and AI catches your patterns before the spiral starts.</p>
+          <p class="pc-desc">The focus app for people who already failed with softer blockers. No dismiss button. No workarounds. No cloud. The system holds the line when your motivation stops holding it.</p>
           <div class="pc-bullets">
-            <div class="pc-bullet"><span class="pb-dot"></span>Guardian-approved unlocks. No one-tap escape routes.</div>
-            <div class="pc-bullet"><span class="pb-dot"></span>Claude AI spots your triggers before they become habits</div>
-            <div class="pc-bullet"><span class="pb-dot"></span>A daily Focus Score that compounds into identity over time</div>
+            <div class="pc-bullet"><span class="pb-dot pb-rwy"></span>Strict app blocking with a cooldown on changing your own rules</div>
+            <div class="pc-bullet"><span class="pb-dot pb-rwy"></span>Lock Now, Hold to End, and Why Open friction built into every session</div>
+            <div class="pc-bullet"><span class="pb-dot pb-rwy"></span>Rewyr Score tracks consistency and compounds into identity over time</div>
+            <div class="pc-bullet"><span class="pb-dot pb-rwy"></span>Local-first. No account. No backend. No data leaving your device.</div>
           </div>
-          <div class="pc-meta">Android <span class="pc-meta-dot">·</span> AI Coach <span class="pc-meta-dot">·</span> Accountability <span class="pc-meta-dot">·</span> Deep Work</div>
+          <div class="pc-tags">
+            <span class="pc-tag pt-rwy">Android</span>
+            <span class="pc-tag pt-rwy">Strict Blocking</span>
+            <span class="pc-tag pt-rwy">Local First</span>
+            <span class="pc-tag pt-neu">Free at Launch</span>
+          </div>
           <div class="pc-footer">
             <span class="pc-url">rewyr.in</span>
             <a href="https://rewyr.in" target="_blank" rel="noopener" class="pc-btn">Visit Rewyr <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-
 <div class="section" id="mission">
   <div class="wrap">
     <div class="mission-grid">
       <div class="rv">
         <div class="sec-label">The Studio</div>
         <p class="mission-pull">Not chasing scale.<br>Chasing correctness.</p>
-        <p class="mission-p">Both products exist because tools that were supposed to help you had exits built in. An ignore button on your screen time app. An ingredient list engineered to hide what's inside. We build without those. Every Rewyr block was set by you when you were thinking clearly. Every Labelyze flag cites the exact regulation that triggered it. <b>We enforce. We don't decide.</b></p>
+        <p class="mission-p">Both products exist because tools that were supposed to help had exits built in. An ignore button on your screen time app. An ingredient list engineered to hide what's inside. We build without those. Every Rewyr block was set by you when you were thinking clearly. Every Labelyze flag cites the exact regulation that triggered it. <b>We enforce. We don't decide.</b></p>
       </div>
       <div class="rv d1">
         <div class="sec-label" style="margin-bottom:0">What We Stand For</div>
         <div class="principles">
-          <div class="principle">
-            <span class="pr-n">01</span>
-            <div><div class="pr-t">No Exits Built In</div><p class="pr-d">Every escape route in an app is a decision made against you. We don't build those.</p></div>
-          </div>
-          <div class="principle">
-            <span class="pr-n">02</span>
-            <div><div class="pr-t">On-Device by Build, Not by Policy</div><p class="pr-d">Policies change. Architecture doesn't. Your data never leaves your phone because we designed it that way from day one.</p></div>
-          </div>
-          <div class="principle">
-            <span class="pr-n">03</span>
-            <div><div class="pr-t">Every Claim Has a Source</div><p class="pr-d">We don't flag things without evidence. Every Labelyze alert cites a regulation. Every Rewyr block was set by you.</p></div>
-          </div>
-          <div class="principle">
-            <span class="pr-n">04</span>
-            <div><div class="pr-t">Built for India, Not Adapted for It</div><p class="pr-d">Both products were designed for this market from day one. Not ported from somewhere else and made to fit.</p></div>
-          </div>
+          <div class="principle"><span class="pr-n">01</span><div><div class="pr-t">No Exits Built In</div><p class="pr-d">Every escape route in an app is a decision made against you. We don't build those.</p></div></div>
+          <div class="principle"><span class="pr-n">02</span><div><div class="pr-t">On-Device by Build, Not by Policy</div><p class="pr-d">Policies change. Architecture doesn't. Your data never leaves your phone because we designed it that way from day one.</p></div></div>
+          <div class="principle"><span class="pr-n">03</span><div><div class="pr-t">Every Claim Has a Source</div><p class="pr-d">We don't flag things without evidence. Every Labelyze alert cites a regulation. Every Rewyr block was set by you.</p></div></div>
+          <div class="principle"><span class="pr-n">04</span><div><div class="pr-t">Built for India, Not Adapted for It</div><p class="pr-d">Both products were designed for this market from day one. Not ported from somewhere else and made to fit.</p></div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="section" id="contact">
   <div class="wrap">
     <div class="sec-label rv">Get In Touch</div>
@@ -385,31 +318,21 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
         <div class="cl">
           <div class="cl-glow"></div>
           <h3 class="ch">Say hello.</h3>
-          <p class="cp">Waitlist signups, feedback, or just a question. We read everything and reply.</p>
+          <p class="cp">Feedback, waitlist signups, or just a question. We read everything and reply.</p>
         </div>
         <div class="cr3">
           <a href="mailto:hello@caffeinelabs.in" class="clink">
-            <div class="ci">
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="color:rgba(232,234,240,0.5)"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-            </div>
+            <div class="ci"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="color:rgba(230,237,232,0.45)"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
             <div class="ct"><strong>Email Us</strong><span>hello&#64;caffeinelabs.in</span></div>
             <svg class="ca" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a href="https://labelyze.in" target="_blank" rel="noopener" class="clink">
-            <div class="ci ci-lyz">
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Syne,system-ui,sans-serif" font-weight="800" font-size="16" fill="#5BB8FF">L</text>
-              </svg>
-            </div>
+            <div class="ci ci-lyz"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Outfit,sans-serif" font-weight="700" font-size="16" fill="#5BB8FF">L</text></svg></div>
             <div class="ct"><strong>Labelyze</strong><span>labelyze.in</span></div>
             <svg class="ca" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a href="https://rewyr.in" target="_blank" rel="noopener" class="clink">
-            <div class="ci ci-rwy">
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Syne,system-ui,sans-serif" font-weight="800" font-size="16" fill="#A78BFA">R</text>
-              </svg>
-            </div>
+            <div class="ci ci-rwy"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Outfit,sans-serif" font-weight="700" font-size="16" fill="#F0C97A">R</text></svg></div>
             <div class="ct"><strong>Rewyr</strong><span>rewyr.in</span></div>
             <svg class="ca" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -418,10 +341,9 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
     </div>
   </div>
 </div>
-
 <footer>
   <div class="fl">
-    <a href="#" class="f-logo">Caffeine Labs</a>
+    <a href="#" class="f-logo">Caffeine<span>Labs</span></a>
     <span class="f-sep">·</span>
     <span class="f-copy">2026 · India</span>
   </div>
@@ -431,22 +353,27 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
     <a href="mailto:hello@caffeinelabs.in">hello&#64;caffeinelabs.in</a>
   </div>
 </footer>
-
 <script>
-document.addEventListener('DOMContentLoaded',function(){
+(function(){
   var hamBtn=document.getElementById('ham-btn');
   var mob=document.getElementById('mob');
   window.tm=function(){
-    var isOpen=mob.classList.contains('open');
-    if(isOpen){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+    var o=mob.classList.contains('open');
+    if(o){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
     else{mob.classList.add('open');mob.setAttribute('aria-hidden','false');hamBtn.classList.add('open');hamBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
   };
   window.cm=function(){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';};
   document.addEventListener('keydown',function(e){if(e.key==='Escape')window.cm();});
-  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
+  },{threshold:0,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
-  setTimeout(function(){document.querySelectorAll('.rv:not(.on)').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight)el.classList.add('on');});},300);
-});
+  setTimeout(function(){
+    document.querySelectorAll('.rv:not(.on)').forEach(function(el){
+      if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('on');
+    });
+  },300);
+})();
 </script>
 </body>
 </html>
