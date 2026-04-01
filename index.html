@@ -12,7 +12,6 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://caffeinelabs.in">
 <meta property="og:locale" content="en_IN">
-<!-- Favicon: espresso cup SVG inline as data URI -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E0B08'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23F0EAE0' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,11 +24,8 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
   --text:#EDE8E0;
   --t2:rgba(237,232,224,0.58);--t3:rgba(237,232,224,0.32);--t4:rgba(237,232,224,0.16);
   --b1:rgba(255,255,255,0.06);--b2:rgba(255,255,255,0.1);--b3:rgba(255,255,255,0.18);
-  /* Crema — espresso foam gold */
   --acc:#F0EAE0;--acc-dim:rgba(240,234,224,0.08);--acc-border:rgba(240,234,224,0.22);
-  /* Labelyze: blue */
   --lyz:#5BB8FF;--lyz-dim:rgba(91,184,255,0.08);--lyz-border:rgba(91,184,255,0.22);
-  /* Rewyr: warm off-white */
   --rwy:#E8DFD0;--rwy-dim:rgba(232,223,208,0.08);--rwy-border:rgba(232,223,208,0.22);
   --card-bg:rgba(255,255,255,0.03);--card-border:rgba(255,255,255,0.08);
   --blur:blur(52px);--r:14px;--nav-h:54px;
@@ -93,13 +89,11 @@ nav::after{content:'';position:absolute;top:0;left:16%;right:16%;height:1px;back
 .d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 
-/* PRODUCT CARDS — fixed layout */
+/* PRODUCT CARDS */
 .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
 .pcard{border-radius:var(--r);border:1px solid var(--card-border);background:var(--card-bg);transition:border-color .25s;display:flex;flex-direction:column}
 .pcard:hover{border-color:rgba(255,255,255,0.14)}
 .pcard-body{padding:32px;display:flex;flex-direction:column;flex:1}
-
-/* Product header */
 .pc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--b1)}
 .pc-identity{display:flex;align-items:center;gap:12px}
 .pc-mark{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fd);font-weight:700;font-size:18px}
@@ -108,16 +102,10 @@ nav::after{content:'';position:absolute;top:0;left:16%;right:16%;height:1px;back
 .pc-name{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--text);letter-spacing:-0.02em;line-height:1}
 .pc-domain{font-size:10px;color:var(--t4);letter-spacing:.05em;margin-top:3px}
 .pc-status{font-size:10px;font-weight:500;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:6px;border:1px solid var(--b1);background:rgba(255,255,255,0.03);white-space:nowrap;flex-shrink:0}
-
-/* Description */
 .pc-desc{font-size:13.5px;color:var(--t2);line-height:1.7;font-weight:300;margin-bottom:20px}
-
-/* Bullets — no em dashes, proper list */
 .pc-bullets{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;flex:1}
 .pc-bullet{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--t3);line-height:1.55}
 .pb-dot{flex-shrink:0;width:4px;height:4px;border-radius:50%;background:var(--acc);opacity:0.5;margin-top:7px}
-
-/* Footer — pinned to bottom */
 .pc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--b1);margin-top:auto}
 .pc-url{font-size:10px;color:var(--t4);letter-spacing:.05em}
 .pc-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:8px 16px;border-radius:8px;text-decoration:none;color:var(--text);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);transition:all .2s;font-family:var(--fd)}
@@ -247,7 +235,7 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
             <div class="pc-bullet"><span class="pb-dot"></span><span>Cross-checked against EU EFSA, US FDA, WHO Codex, Health Canada and UK FSA simultaneously</span></div>
             <div class="pc-bullet"><span class="pb-dot"></span><span>Personalised safety verdict based on your exact health profile and dietary conditions</span></div>
             <div class="pc-bullet"><span class="pb-dot"></span><span>All scan data, health profiles, and history stay on your device. Always.</span></div>
-            <div class="pc-bullet"><span class="pb-dot"></span><span>300+ ingredients tracked. Every flag cites the regulation that triggered it.</span></div>
+            <div class="pc-bullet"><span class="pb-dot"></span><span>320+ ingredients tracked. Every flag cites the regulation that triggered it.</span></div>
           </div>
           <div class="pc-footer">
             <span class="pc-url">labelyze.in</span>
@@ -321,7 +309,7 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
           <p class="cp">Feedback, waitlist signups, or just a question. We read everything and reply.</p>
         </div>
         <div class="cr3">
-          <a href="/cdn-cgi/l/email-protection#6a020f0606052a090b0c0c0f03040f060b0819440304" class="clink">
+          <a href="mailto:hello@caffeinelabs.in" class="clink">
             <div class="ci"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="color:rgba(237,232,224,0.4)"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
             <div class="ct"><strong>Email Us</strong><span>hello&#64;caffeinelabs.in</span></div>
             <svg class="ca" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -351,24 +339,50 @@ footer{border-top:1px solid var(--b1);padding:26px 52px;display:flex;align-items
   <div class="flinks">
     <a href="https://labelyze.in" target="_blank" rel="noopener">Labelyze</a>
     <a href="https://rewyr.in" target="_blank" rel="noopener">Rewyr</a>
-    <a href="/cdn-cgi/l/email-protection#4f272a2323200f2c2e29292a26212a232e2d3c612621">hello&#64;caffeinelabs.in</a>
+    <a href="mailto:hello@caffeinelabs.in">hello&#64;caffeinelabs.in</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
   var hamBtn=document.getElementById('ham-btn');
   var mob=document.getElementById('mob');
   window.tm=function(){
     var o=mob.classList.contains('open');
-    if(o){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
-    else{mob.classList.add('open');mob.setAttribute('aria-hidden','false');hamBtn.classList.add('open');hamBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+    if(o){
+      mob.classList.remove('open');
+      mob.setAttribute('aria-hidden','true');
+      hamBtn.classList.remove('open');
+      hamBtn.setAttribute('aria-expanded','false');
+      document.body.style.overflow='';
+    } else {
+      mob.classList.add('open');
+      mob.setAttribute('aria-hidden','false');
+      hamBtn.classList.add('open');
+      hamBtn.setAttribute('aria-expanded','true');
+      document.body.style.overflow='hidden';
+    }
   };
-  window.cm=function(){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';};
+  window.cm=function(){
+    mob.classList.remove('open');
+    mob.setAttribute('aria-hidden','true');
+    hamBtn.classList.remove('open');
+    hamBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  };
   document.addEventListener('keydown',function(e){if(e.key==='Escape')window.cm();});
   var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}
+    });
   },{threshold:0,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
   setTimeout(function(){
-    d
+    document.querySelectorAll('.rv:not(.on)').forEach(function(el){
+      if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('on');
+    });
+  },300);
+})();
+</script>
+</body>
+</html>
